@@ -1,0 +1,44 @@
+# CURRENT HOLDINGS at start of day (what you hold RIGHT NOW)
+# Positive = long shares, Negative = short shares
+# Use the SIGNED share counts from yesterday's fills.
+# Tickers must match the pairs in config.yaml (XLE/CAT, XLK/META, USO/COP).
+
+Kalman Filter:
+  XLE: 0
+  CAT: 0
+  XLK: 0
+  META: 0
+  USO: 0
+  COP: 0
+
+LSTM:
+  XLE: 0
+  CAT: 0
+  XLK: 0
+  META: 0
+  USO: 0
+  COP: 0
+
+Transformer:
+  XLE: 0
+  CAT: 0
+  XLK: 0
+  META: 0
+  USO: 0
+  COP: 0
+
+N-BEATS:
+  XLE: 0
+  CAT: 0
+  XLK: 0
+  META: 0
+  USO: 0
+  COP: 0
+
+CNN-Transformer:
+  XLE: 0
+  CAT: 0
+  XLK: 0
+  META: 0
+  USO: 0
+  COP: 0

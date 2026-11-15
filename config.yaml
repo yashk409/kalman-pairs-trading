@@ -1,0 +1,57 @@
+trading:
+  capital_per_strategy: 1000000
+  capital_per_pair: 3000000
+  pairs:
+  - - ZION
+    - JETS
+  - - KEY
+    - HLT
+  - - MAR
+    - AME
+  - - DIA
+    - CFG
+  - - DUK
+    - CMS
+  - - XLC
+    - JPM
+  - - BKNG
+    - MA
+  - - NCLH
+    - BX
+market:
+  benchmark: SPY
+  timezone: America/New_York
+  open: 09:30
+  close: '16:00'
+  currency: $
+dates:
+  start: '2015-01-01'
+  fine_tune_days: 0
+  coint_lookback: 756
+kalman_filter:
+  entry_z: 1.5
+  exit_z: 0.5
+  stop_z: 4.0
+  roll_win: 60
+  t_cost: 0.0005
+  p0_scale: 1.0
+  lambda_min: -0.5
+  lambda_max: -1.0e-05
+nbeats:
+  num_blocks: 3
+cnn_transformer:
+  d_model: 32
+  num_heads: 4
+  ff_dim: 64
+  num_blocks: 2
+deep_learning:
+  lookback: 60
+  horizon: 5
+  val_frac: 0.15
+  epochs: 300
+  batch_size: 64
+  learning_rate: 0.0003
+  seeds:
+  - 42
+  - 123
+  entry_mult: 1.0

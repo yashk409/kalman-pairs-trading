@@ -1,0 +1,83 @@
+HTTP Error 404: {"quoteSummary":{"result":null,"error":{"code":"Not Found","description":"Quote not found for symbol: ANSS"}}}
+$ANSS: possibly delisted; no timezone found
+$SKX: possibly delisted; no timezone found
+$HES: possibly delisted; no timezone found
+$CTRA: possibly delisted; no timezone found
+$FI: possibly delisted; no timezone found
+$PARA: possibly delisted; no timezone found
+$MRO: possibly delisted; no timezone found
+$CMA: possibly delisted; no timezone found
+$DFS: possibly delisted; no timezone found
+$X: possibly delisted; no timezone found
+$SNV: possibly delisted; no timezone found
+$K: possibly delisted; no timezone found
+
+12 Failed downloads:
+['ANSS', 'SKX', 'HES', 'CTRA', 'FI', 'PARA', 'MRO', 'CMA', 'DFS', 'X', 'SNV', 'K']: possibly delisted; no timezone found
+Cost barrier: gross >= 3.0x round-trip (10bps) -> spread_sd >= 60bps at beta=1
+================================================================================================
+PHASE 0 -- ROLLING RE-SCREEN WALK-FORWARD (no selection lookahead)
+================================================================================================
+market=us  universe=475 tickers  top=30 pairs/cutoff
+entry_z=1.5  t_cost=5bps/leg  book=3,000,000
+GO/NO-GO: KF Sharpe < 0.30 after re-screen => edge was selection bias.
+
+Downloading full universe once...
+  464 tickers, 2013-01-02 -> 2026-07-13
+  vol regime: 27.7% of days are LOW (entries blocked for KF+VolFilter)
+
+------------------------------------------------------------------------------------------------
+CUTOFF 2024-07-01  -- screening on data <= 2024-07-01 ONLY
+  30,965 candidates -> 88 passed filters -> 30 selected
+  e.g. INVH/ESS, HYG/VCSH, EZA/DBB, IYT/ICE, XLI/RL, CAKE/BURL ...
+  OOS 2024-07-01 -> 2024-12-30 (126d, 30 pairs)
+    strategy            GROSS      NET    cost  Sharpe   maxDD  trades
+    Kalman Filter      +0.08%   -0.65%   0.73%   -0.67   -1.0%     429
+    KF+VolFilter       +0.74%   +0.14%   0.60%   +0.16   -0.7%     354
+    Static-Z           -2.95%   -3.29%   0.34%   -2.10   -3.7%     204
+    SPY                    --   +8.56%      --   +1.16   -8.4%
+------------------------------------------------------------------------------------------------
+CUTOFF 2025-01-02  -- screening on data <= 2025-01-02 ONLY
+  28,351 candidates -> 134 passed filters -> 30 selected
+  e.g. EMB/EWT, TROW/SCHW, TDG/TOL, IWM/XLF, XLE/STLD, CAKE/MS ...
+  OOS 2025-01-02 -> 2025-07-08 (126d, 30 pairs)
+    strategy            GROSS      NET    cost  Sharpe   maxDD  trades
+    Kalman Filter      +1.83%   +1.03%   0.80%   +0.52   -1.4%     454
+    KF+VolFilter       +1.85%   +1.08%   0.77%   +0.54   -1.4%     442
+    Static-Z           +0.43%   +0.07%   0.36%   +0.03   -2.0%     214
+    SPY                    --   +6.74%      --   +0.58  -18.8%
+------------------------------------------------------------------------------------------------
+CUTOFF 2025-07-01  -- screening on data <= 2025-07-01 ONLY
+  27,665 candidates -> 54 passed filters -> 30 selected
+  e.g. XBI/MHK, JNK/L, EWC/ITA, IBB/BBY, MS/CAKE, NXPI/AMAT ...
+  OOS 2025-07-01 -> 2025-12-30 (126d, 30 pairs)
+    strategy            GROSS      NET    cost  Sharpe   maxDD  trades
+    Kalman Filter      +0.25%   -0.49%   0.74%   -0.63   -1.7%     435
+    KF+VolFilter       -0.72%   -1.09%   0.37%   -1.76   -1.5%     226
+    Static-Z           -0.06%   -0.42%   0.36%   -0.32   -3.2%     213
+    SPY                    --  +11.87%      --   +2.05   -5.1%
+------------------------------------------------------------------------------------------------
+CUTOFF 2026-01-02  -- screening on data <= 2026-01-02 ONLY
+  17,514 candidates -> 64 passed filters -> 27 selected
+  e.g. XLC/AVGO, DVN/LNG, ITW/HD, CMS/PPL, ADSK/BLK, EPD/MPLX ...
+  OOS 2026-01-02 -> 2026-07-07 (126d, 27 pairs)
+    strategy            GROSS      NET    cost  Sharpe   maxDD  trades
+    Kalman Filter      +0.47%   -0.36%   0.83%   -0.27   -2.5%     436
+    KF+VolFilter       +0.05%   -0.67%   0.72%   -0.52   -2.4%     384
+    Static-Z           +2.59%   +2.16%   0.43%   +1.20   -1.5%     224
+    SPY                    --  +10.03%      --   +1.40   -8.9%
+
+================================================================================================
+VERDICT -- aggregated across cutoffs (each window's pairs chosen blind to it)
+================================================================================================
+strategy            GROSS      NET  Sharpe   maxDD   win      t      p
+Kalman Filter      +0.66%   -0.12%   -0.26   -1.6% 1/4    -0.30  0.781
+KF+VolFilter       +0.48%   -0.13%   -0.40   -1.5% 2/4    -0.28  0.796
+Static-Z           +0.00%   -0.37%   -0.30   -2.6% 2/4    -0.33  0.763
+SPY                +9.30%   +9.30%   +1.30  -10.3% 4/4     8.54  0.003
+
+================================================================================================
+NO-GO: KF Sharpe -0.26 < 0.30. The edge does not survive point-in-time selection.
+================================================================================================
+Saved 16 rows to walkforward_results.csv
+Wrote markdown report to WALKFORWARD_REPORT.md

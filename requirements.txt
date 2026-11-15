@@ -1,0 +1,6 @@
+yfinance
+statsmodels
+scikit-learn
+pykalman
+pyyaml
+tensorflow
